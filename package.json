@@ -1,0 +1,20 @@
+{
+  "name": "conversion-tracking-agent",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Agent skill + code that audits GTM, wires Google Ads and Meta conversions, and proves each lead counts once.",
+  "engines": {
+    "node": ">=22.18"
+  },
+  "scripts": {
+    "scan": "node --experimental-strip-types --disable-warning=ExperimentalWarning bin/tag-health.mjs",
+    "test:ssrf": "node --experimental-strip-types --disable-warning=ExperimentalWarning tests/ssrf.test.mjs",
+    "test:detect": "node --experimental-strip-types --disable-warning=ExperimentalWarning tests/detect.test.mjs",
+    "test:meta": "node --experimental-strip-types --disable-warning=ExperimentalWarning tests/meta-capi.test.mjs",
+    "test:parity": "node --experimental-strip-types --disable-warning=ExperimentalWarning example/scripts/gtm-parity-qa.mjs",
+    "test:lead": "node --experimental-strip-types --disable-warning=ExperimentalWarning example/scripts/analytics-guard-qa.mjs",
+    "test": "npm run -s test:ssrf && npm run -s test:detect && npm run -s test:meta && npm run -s test:parity && npm run -s test:lead"
+  },
+  "license": "MIT"
+}
